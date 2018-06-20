@@ -21,3 +21,7 @@ sudo ip link add tap1 type veth peer name container_name-veth
 #now move the container_name-veth into container.
 sudo ip link set container_name-veth netns contianer_name
 
+#bring up both veth pairs
+sudo ip link set tap1 up
+sudo ip netns exec container_name ip link set dev container_name-veth up
+
